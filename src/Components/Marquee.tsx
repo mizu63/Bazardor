@@ -1,3 +1,4 @@
+
 import MarqueeText from "react-marquee-text";
 
 interface Product {
@@ -14,7 +15,8 @@ interface Product {
 
 const Marquee = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products?category=chal"
+    // "https://api.api-store.workers.dev/api/bazardor/products?category=chal"
+    "https://api.abcz.workers.dev/api/bazardor/products"
   );
 
   if (!res.ok) {
@@ -23,36 +25,50 @@ const Marquee = async () => {
 
   const data: Product[] = await res.json();
 
-  return (
-    <div className="bg-red-600 text-white">
-      <div className="mx-auto flex max-w-7xl items-center gap-2">
-        <div className="shrink-0 bg-red-600 px-2 font-bold">
-          সর্বশেষ
-        </div>
+ 
+  const marqueeData = [...data, ...data, ...data];
 
+  return (
+    <div className="w-full overflow-hidden border-y border-gray-200 bg-white">
+      <div>
         <MarqueeText
           direction="right"
           duration={10}
-          className="px-2 py-1 text-sm"
+          className="py-1 text-sm"
         >
-          {data.map((product) => (
-            <span key={product.id} className="mx-4">
-              {product.change.dir === "up"
-                ? "▲"
-                : product.change.dir === "down"
-                  ? "▼"
-                  : "—"}
+          {marqueeData.map((product, index) => (
+            <span
+              key={`${product.id}-${index}`}
+              className="mx-1 inline-flex items-center whitespace-nowrap"
+            >
+              <span className="text-gray-700">
+                {product.nameBn}
+              </span>
 
-              {" "}
-              {product.nameBn} — {product.today} টাকা/{product.unit}{" "}
+              <span className="ml-1 text-gray-700">
+                {product.today} টাকা/{product.unit}
+              </span>
 
-              <span>
+              <span
+                className={`ml-1 ${
+                  product.change.dir === "up"
+                    ? "text-red-500"
+                    : product.change.dir === "down"
+                      ? "text-green-600"
+                      : "text-gray-500"
+                }`}
+              >
+                {product.change.dir === "up"
+                  ? "▲"
+                  : product.change.dir === "down"
+                    ? "▼"
+                    : "—"}{" "}
                 {product.change.pct > 0
                   ? `+${product.change.pct}%`
                   : `${product.change.pct}%`}
               </span>
 
-              <span className="mx-4">•</span>
+              <span className="ml-5 text-gray-300">•</span>
             </span>
           ))}
         </MarqueeText>

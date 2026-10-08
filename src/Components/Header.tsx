@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Navl from "./Navl";
-import Marquee from "./Marquee";
+
 
 const Header = () => {
   const data = new Date().toLocaleDateString("bn-BD", {
@@ -60,7 +60,7 @@ const Header = () => {
   <Navl />
 </div>
 <div>
-    <Marquee/>
+   
 </div>
 
     </header>

@@ -4,8 +4,8 @@ import Image from "next/image";
   });
 const Hero = () => {
   return (
-    <section>
-      <div className="mx-auto flex min-h-[388px] max-w-6xl items-center justify-between overflow-hidden rounded-[24px] border border-[#dce5df] bg-white px-5 py-8 sm:px-8 lg:px-4">
+    <section className="px-2">
+      <div className="mx-auto flex min-h-[388px] items-center justify-between overflow-hidden rounded-[24px] border border-[#dce5df] bg-white px-5 py-8 sm:px-8 lg:px-4 mt-4">
 
         {/* Left Content */}
         <div className="max-w-[620px]">
