@@ -10,8 +10,8 @@ interface Navs {
 
 const Navl = async () => {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/categories"
-    // "https://api.api-store.workers.dev/api/bazardor/categories"
+    // "https://api.abcz.workers.dev/api/bazardor/categories"
+    "https://api.api-store.workers.dev/api/bazardor/categories"
   );
 
   if (!res.ok) {
@@ -24,7 +24,7 @@ const Navl = async () => {
    <nav className="mt-1 flex w-full pt-3 px-1">
     
         
-        {/* Categories */}
+    
         {data.map((n) => (
           <Link
             key={n.id}

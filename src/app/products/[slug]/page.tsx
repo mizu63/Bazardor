@@ -59,7 +59,8 @@ export default async function Page({
   const { slug } = await params;
 
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products/${slug}`,
+    `https://api.api-store.workers.dev/api/bazardor/products/${slug}`,
+    // `https://api.abcz.workers.dev/api/bazardor/products/${slug}`,
     {
       cache: "no-store",
     }
@@ -127,15 +128,15 @@ export default async function Page({
         {/* =========================
             Product Header
         ========================= */}
-  <div className="rounded-[20px] border border-[#dce3de] bg-white p-6">
+        <div className="rounded-[20px] border border-[#dce3de] bg-white p-6">
 
-  <div className="flex items-center justify-between gap-5">
+          <div className="flex items-center justify-between gap-5">
 
-    {/* Left Side */}
-    <div className="flex items-center gap-4">
+            {/* Left Side */}
+            <div className="flex items-center gap-4">
 
-      <div
-        className="
+              <div
+                className="
           flex
           h-[70px]
           w-[70px]
@@ -146,75 +147,74 @@ export default async function Page({
           bg-[#f0f5f1]
           text-[38px]
         "
-      >
-        {product.image}
-      </div>
+              >
+                {product.image}
+              </div>
 
-      <div>
-        <h1 className="text-[26px] font-bold text-[#111]">
-          {product.nameBn}
-        </h1>
+              <div>
+                <h1 className="text-[26px] font-bold text-[#111]">
+                  {product.nameBn}
+                </h1>
 
-        <p className="mt-1 text-[14px] text-gray-500">
-          {getUnit(product.unit)} · {product.categoryNameBn}
-        </p>
+                <p className="mt-1 text-[14px] text-gray-500">
+                  {getUnit(product.unit)} · {product.categoryNameBn}
+                </p>
 
-        {/* Price Change */}
-        <p className="mt-2 text-[14px] text-gray-600">
-          গতকালের তুলনায় আজ দাম{" "}
-          <span
-            className={
-              isUp
-                ? "font-bold text-[#df3545]"
-                : isDown
-                  ? "font-bold text-green-600"
-                  : "font-bold text-gray-500"
-            }
-          >
-            {isUp
-              ? "বেড়েছে"
-              : isDown
-                ? "কমেছে"
-                : "অপরিবর্তিত"}
-          </span>{" "}
-          {banglaNumber(product.change?.pct ?? 0)}%
-        </p>
-      </div>
+                {/* Price Change */}
+                <p className="mt-2 text-[14px] text-gray-600">
+                  গতকালের তুলনায় আজ দাম{" "}
+                  <span
+                    className={
+                      isUp
+                        ? "font-bold text-[#df3545]"
+                        : isDown
+                          ? "font-bold text-green-600"
+                          : "font-bold text-gray-500"
+                    }
+                  >
+                    {isUp
+                      ? "বেড়েছে"
+                      : isDown
+                        ? "কমেছে"
+                        : "অপরিবর্তিত"}
+                  </span>{" "}
+                  {banglaNumber(product.change?.pct ?? 0)}%
+                </p>
+              </div>
 
-    </div>
+            </div>
 
-    {/* Right Side - Today Price */}
-    <div className="shrink-0 rounded-[16px] bg-[#f0f5f1] px-5 py-4 text-center">
+            {/* Right Side - Today Price */}
+            <div className="shrink-0 rounded-[16px] bg-[#f0f5f1] px-5 py-4 text-center">
 
-      <p className="text-[13px] text-gray-500">
-        আজকের দাম
-      </p>
+              <p className="text-[13px] text-gray-500">
+                আজকের দাম
+              </p>
 
-      <p className="mt-1 text-[30px] font-bold text-[#111]">
-        {banglaNumber(product.today)}
-      </p>
+              <p className="mt-1 text-[30px] font-bold text-[#111]">
+                {banglaNumber(product.today)}
+              </p>
 
-      <p className="text-[13px] text-gray-500">
-        টাকা / {product.unit === "kg" ? "কেজি" : product.unit}
-      </p>
+              <p className="text-[13px] text-gray-500">
+                টাকা / {product.unit === "kg" ? "কেজি" : product.unit}
+              </p>
 
-      <p
-        className={`mt-1 text-sm font-semibold ${
-          isUp
-            ? "text-[#df3545]"
-            : isDown
-              ? "text-green-600"
-              : "text-gray-500"
-        }`}
-      >
-        {isUp ? "▲" : isDown ? "▼" : "—"}{" "}
-        {banglaNumber(product.change?.pct ?? 0)}%
-      </p>
+              <p
+                className={`mt-1 text-sm font-semibold ${isUp
+                    ? "text-[#df3545]"
+                    : isDown
+                      ? "text-green-600"
+                      : "text-gray-500"
+                  }`}
+              >
+                {isUp ? "▲" : isDown ? "▼" : "—"}{" "}
+                {banglaNumber(product.change?.pct ?? 0)}%
+              </p>
 
-    </div>
+            </div>
 
-  </div>
-</div>
+          </div>
+        </div>
 
         {/* =========================
             Price Summary
@@ -234,7 +234,7 @@ export default async function Page({
                 সর্বনিম্ন দাম
               </p>
 
-              <p className="mt-2 text-[25px] font-bold text-[#111]">
+              <p className="mt-2 text-[25px] font-bold text-[#2ae242]">
                 {banglaNumber(lowestMarket.min)} টাকা
               </p>
 
@@ -255,7 +255,7 @@ export default async function Page({
                 সর্বাধিক দাম
               </p>
 
-              <p className="mt-2 text-[25px] font-bold text-[#111]">
+              <p className="mt-2 text-[25px] font-bold text-[#a12626]">
                 {banglaNumber(highestMarket.max)} টাকা
               </p>
 
@@ -370,22 +370,20 @@ export default async function Page({
           </div>
         </div>
 
-        {/* =========================
-            Footer Note
-        ========================= */}
-        <div className="mt-8 pb-4 text-center">
-
-          <p className="text-[14px] font-medium text-gray-600">
-            বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।
-          </p>
-
-          <p className="mt-2 text-[12px] text-gray-400">
-            সকল দাম সম্ভাব্য; বাজার অবস্থার ওপর নির্ভর করে পরিবর্তিত হয়।
-          </p>
-
-        </div>
 
       </div>
+
+
+
+      <div className="mt-6 flex justify-center pb-6">
+  <Link
+    href={`/category/${product.category}`}
+    className="flex items-center gap-2 rounded-xl bg-green-600 px-8 py-3 font-semibold text-white hover:bg-green-700"
+  >
+    <span>{product.categoryIcon}</span>
+    সব {product.categoryNameBn}
+  </Link>
+</div>
     </main>
   );
 }

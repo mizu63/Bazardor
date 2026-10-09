@@ -16,7 +16,8 @@ interface Product {
 const Marquee = async () => {
   const res = await fetch(
     // "https://api.api-store.workers.dev/api/bazardor/products?category=chal"
-    "https://api.abcz.workers.dev/api/bazardor/products"
+    // "https://api.abcz.workers.dev/api/bazardor/products"
+      "https://api.api-store.workers.dev/api/bazardor/products"
   );
 
   if (!res.ok) {
@@ -29,12 +30,13 @@ const Marquee = async () => {
   const marqueeData = [...data, ...data, ...data];
 
   return (
-    <div className="w-full overflow-hidden border-y border-gray-200 bg-white">
+    <div className="w-full  overflow-hidden border-y border-gray-200 bg-white">
       <div>
         <MarqueeText
           direction="right"
           duration={10}
           className="py-1 text-sm"
+          pauseOnHover={true}
         >
           {marqueeData.map((product, index) => (
             <span
