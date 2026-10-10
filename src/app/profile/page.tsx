@@ -71,7 +71,7 @@ const ProfilePage = () => {
   return (
     <main className="min-h-dvh bg-[#f0f5f0] px-3 py-6 sm:px-6 sm:py-10">
       <div className="mx-auto w-full max-w-3xl">
-        {/* Header */}
+    
         <header className="mb-6 sm:mb-8">
           <p className="text-sm font-medium text-green-700">
             আপনার অ্যাকাউন্ট
@@ -93,7 +93,7 @@ const ProfilePage = () => {
           </p>
         )}
 
-        {/* User information */}
+
         <section className="flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:p-6">
           <div className="flex min-w-0 flex-1 items-center gap-4">
             {user.image ? (
@@ -133,7 +133,7 @@ const ProfilePage = () => {
           </button>
         </section>
 
-        {/* Update name form */}
+  
         <ProfileNameForm
           key={user.id}
           initialName={user.name || ""}

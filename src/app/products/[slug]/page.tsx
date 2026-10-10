@@ -59,8 +59,8 @@ export default async function Page({
   const { slug } = await params;
 
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${slug}`,
-    // `https://api.abcz.workers.dev/api/bazardor/products/${slug}`,
+    // `https://api.api-store.workers.dev/api/bazardor/products/${slug}`,
+    `https://api.abcz.workers.dev/api/bazardor/products/${slug}`,
     {
       cache: "no-store",
     }
@@ -81,9 +81,7 @@ export default async function Page({
   const isUp = product.change?.dir === "up";
   const isDown = product.change?.dir === "down";
 
-  /* =========================
-     Market Calculations
-  ========================= */
+
 
   const lowestMarket = product.markets.reduce((prev, current) =>
     current.min < prev.min ? current : prev
@@ -101,7 +99,7 @@ export default async function Page({
   return (
     <main className="bg-[#f8faf8] px-[20px] py-8 sm:px-[30px]">
 
-      {/* Breadcrumb */}
+
       <div className="mx-auto mb-6 flex max-w-6xl items-center gap-2 text-sm text-gray-500">
         <Link href="/" className="hover:text-green-600">
           হোম
@@ -125,14 +123,12 @@ export default async function Page({
 
       <div className="mx-auto max-w-6xl">
 
-        {/* =========================
-            Product Header
-        ========================= */}
+ 
         <div className="rounded-[20px] border border-[#dce3de] bg-white p-6">
 
           <div className="flex items-center justify-between gap-5">
 
-            {/* Left Side */}
+  
             <div className="flex items-center gap-4">
 
               <div
@@ -156,11 +152,15 @@ export default async function Page({
                   {product.nameBn}
                 </h1>
 
+               
                 <p className="mt-1 text-[14px] text-gray-500">
-                  {getUnit(product.unit)} · {product.categoryNameBn}
+                  {product.unit === "dozen"
+                    ? "প্রতি ডজন"
+                    : getUnit(product.unit)}{" "}
+                  · {product.categoryNameBn || "ডিম-দুধ"}
                 </p>
 
-                {/* Price Change */}
+
                 <p className="mt-2 text-[14px] text-gray-600">
                   গতকালের তুলনায় আজ দাম{" "}
                   <span
@@ -184,7 +184,7 @@ export default async function Page({
 
             </div>
 
-            {/* Right Side - Today Price */}
+       
             <div className="shrink-0 rounded-[16px] bg-[#f0f5f1] px-5 py-4 text-center">
 
               <p className="text-[13px] text-gray-500">
@@ -201,10 +201,10 @@ export default async function Page({
 
               <p
                 className={`mt-1 text-sm font-semibold ${isUp
-                    ? "text-[#df3545]"
-                    : isDown
-                      ? "text-green-600"
-                      : "text-gray-500"
+                  ? "text-[#df3545]"
+                  : isDown
+                    ? "text-green-600"
+                    : "text-gray-500"
                   }`}
               >
                 {isUp ? "▲" : isDown ? "▼" : "—"}{" "}
@@ -216,9 +216,6 @@ export default async function Page({
           </div>
         </div>
 
-        {/* =========================
-            Price Summary
-        ========================= */}
         <div className="mt-6">
 
           <h2 className="mb-4 text-[22px] font-bold text-[#111]">
@@ -227,7 +224,7 @@ export default async function Page({
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
 
-            {/* Lowest */}
+          
             <div className="rounded-[17px] border border-[#dce3de] bg-white p-5">
 
               <p className="text-[14px] text-gray-500">
@@ -248,7 +245,7 @@ export default async function Page({
 
             </div>
 
-            {/* Highest */}
+   
             <div className="rounded-[17px] border border-[#dce3de] bg-white p-5">
 
               <p className="text-[14px] text-gray-500">
@@ -269,14 +266,14 @@ export default async function Page({
 
             </div>
 
-            {/* Average */}
+       
             <div className="rounded-[17px] border border-[#dce3de] bg-white p-5">
 
               <p className="text-[14px] text-gray-500">
                 গড় দাম
               </p>
 
-              <p className="mt-2 text-[25px] font-bold text-[#111]">
+              <p className="mt-2 text-[25px] font-bold text-[#6ddd5e]">
                 {banglaNumber(averagePrice.toFixed(2))} টাকা
               </p>
 
@@ -289,9 +286,7 @@ export default async function Page({
           </div>
         </div>
 
-        {/* =========================
-            Markets
-        ========================= */}
+       
         <div className="mt-8">
 
           <h2 className="mb-4 text-[22px] font-bold text-[#111]">
@@ -376,14 +371,14 @@ export default async function Page({
 
 
       <div className="mt-6 flex justify-center pb-6">
-  <Link
-    href={`/category/${product.category}`}
-    className="flex items-center gap-2 rounded-xl bg-green-600 px-8 py-3 font-semibold text-white hover:bg-green-700"
-  >
-    <span>{product.categoryIcon}</span>
-    সব {product.categoryNameBn}
-  </Link>
-</div>
+        <Link
+          href={`/category/${product.category}`}
+          className="flex items-center gap-2 rounded-xl bg-green-600 px-8 py-3 font-semibold text-white hover:bg-green-700"
+        >
+          <span>{product.categoryIcon}</span>
+          সব {product.categoryNameBn}
+        </Link>
+      </div>
     </main>
   );
 }

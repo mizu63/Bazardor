@@ -16,8 +16,8 @@ interface Product {
 const Marquee = async () => {
   const res = await fetch(
     // "https://api.api-store.workers.dev/api/bazardor/products?category=chal"
-    // "https://api.abcz.workers.dev/api/bazardor/products"
-      "https://api.api-store.workers.dev/api/bazardor/products"
+      // "https://api.api-store.workers.dev/api/bazardor/products"
+        "https://api.abcz.workers.dev/api/bazardor/products"
   );
 
   if (!res.ok) {

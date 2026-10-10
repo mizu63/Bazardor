@@ -29,7 +29,7 @@ const Hero = () => {
 
           
           <Link
-            href="/src/Components/ALLproduct.tsx"
+            href="/allproducts"
             className="mt-5 inline-block rounded-lg bg-[#07883f] px-5 py-2.5 text-[15px] font-semibold text-white shadow-md transition hover:bg-[#067536]"
           >
             সব পণ্য দেখুন
