@@ -38,9 +38,6 @@ const client = new MongoClient(mongoUrl);
 const db = client.db("Bazerdor");
 
 export const auth = betterAuth({
-   trustedOrigins: [
-    "https://bazardor-4lq8.vercel.app",
-  ],
   emailAndPassword: {
     enabled: true,
   },
