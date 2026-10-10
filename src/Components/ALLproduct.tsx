@@ -30,7 +30,7 @@ export default async function ALLproduct() {
   const products: Product[] = data;
 
   return (
-    <main className="mt-6]">
+    <main className="mt-6 mb-4">
       <div >
 
         <div className="mb-[14px] flex items-center gap-3">

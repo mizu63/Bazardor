@@ -42,17 +42,19 @@ if (data) {
 const handel = async () => {
     const { error } = await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/",
+      // callbackURL: "/",
+       callbackURL: "/?socialLogin=success",
     });
 
-    if (error) {
-      toast.error(error.message || "Google দিয়ে সাইন ইন করা যায়নি!");
-    }
+   if (error) {
+    toast.error(error.message || "Google দিয়ে সাইন ইন করা যায়নি!");
+  }
   };
 const handelgit = async () => {
   const { error } = await authClient.signIn.social({
     provider: "github",
-    callbackURL: "/",
+    // callbackURL: "/",
+     callbackURL: "/?socialLogin=success",
   });
 
   if (error) {

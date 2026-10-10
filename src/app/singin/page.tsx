@@ -40,7 +40,8 @@ const SingInPage = () => {
   const handel = async () => {
     const { error } = await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/",
+      // callbackURL: "/",
+        callbackURL: "/?socialLogin=success",
     });
 
     if (error) {
@@ -50,7 +51,8 @@ const SingInPage = () => {
   const handelgit = async () => {
     const { error } = await authClient.signIn.social({
       provider: "github",
-      callbackURL: "/",
+      // callbackURL: "/",
+        callbackURL: "/?socialLogin=success",
     });
 
     if (error) {

@@ -5,6 +5,8 @@ import Header from "@/Components/Header";
 import Marquee from "@/Components/Marquee";
 import Footer from "@/Components/Footer";
 import { Toaster } from "react-hot-toast";
+import SocialLoginToast from "@/Components/SocialLoginToast";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -41,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
          <Header /> 
          <Marquee /> 
          <main className="mx-auto w-full max-w-7xl flex-1">
+            <SocialLoginToast />
            {children} 
            </main> 
            <Toaster position="top-right" /> 

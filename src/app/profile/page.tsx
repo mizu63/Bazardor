@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+import toast from "react-hot-toast";
 const ProfilePage = () => {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
@@ -20,10 +20,11 @@ const ProfilePage = () => {
       const { error } = await authClient.signOut();
 
       if (error) {
-        setErrorMessage(error.message || "সাইন আউট করা যায়নি।");
+        toast.error(error.message || "সাইন আউট করা যায়নি।");
         return;
       }
 
+      toast.success("সফলভাবে সাইন আউট হয়েছে!");
       router.replace("/singin");
       router.refresh();
     } catch {
