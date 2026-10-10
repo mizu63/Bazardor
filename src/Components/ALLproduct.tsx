@@ -20,14 +20,20 @@ type Product = {
 };
 
 export default async function ALLproduct() {
-  const res = await fetch(
+  
+const res = await fetch(
     // "https://api.api-store.workers.dev/api/bazardor/products"
-    "https://api.abcz.workers.dev/api/bazardor/products"
+  "https://api.abcz.workers.dev/api/bazardor/products",
+  { cache: "no-store" }
+);
 
-  );
+if (!res.ok) {
+  throw new Error(`Failed to fetch products: ${res.status}`);
+}
 
-  const data = await res.json();
-  const products: Product[] = data;
+const data = await res.json();
+const products: Product[] = Array.isArray(data) ? data : [];
+
 
   return (
     <main className="mt-6 mb-4">
