@@ -35,7 +35,7 @@ export default function UserMenu() {
         );
     }
 
-  
+
     const user = session.user;
 
     return (
@@ -85,26 +85,26 @@ export default function UserMenu() {
                 </li>
 
                 <li>
-                   
-<button
-  type="button"
-  className="w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-red-50"
-  onClick={async () => {
-    const { error } = await authClient.signOut();
 
-    if (error) {
-      toast.error("সাইন আউট করা যায়নি!");
-      console.error("Sign out failed:", error);
-      return;
-    }
+                    <button
+                        type="button"
+                        className="w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-red-50"
+                        onClick={async () => {
+                            const { error } = await authClient.signOut();
 
-    toast.success("সফলভাবে সাইন আউট হয়েছে!");
-    window.location.href = "/";
-  }}
->
-  ↪ সাইন আউট
-</button>
+                            if (error) {
+                                toast.error("সাইন আউট করা যায়নি!");
+                                console.error("Sign out failed:", error);
+                                return;
+                            }
 
+                            toast.success("সফলভাবে সাইন আউট হয়েছে!");
+                            window.location.href = "/";
+                        }}
+                    >
+                        ↪ সাইন আউট
+                    </button>
+ 
 
                 </li>
             </ul>

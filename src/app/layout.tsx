@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-     <body className="min-h-screen bg-[#f8faf9]">
+     {/* <body className="min-h-screen bg-[#f8faf9]">
      
         <Header />
          <Marquee/>
@@ -36,7 +36,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Toaster position="top-right" />
         <Footer/>
-      </body>
+      </body> */}
+      <body className="flex min-h-screen flex-col bg-[#f8faf9]">
+         <Header /> 
+         <Marquee /> 
+         <main className="mx-auto w-full max-w-7xl flex-1">
+           {children} 
+           </main> 
+           <Toaster position="top-right" /> 
+           <Footer />
+            </body>
     </html>
   );
 }
