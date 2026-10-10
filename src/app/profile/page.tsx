@@ -56,7 +56,7 @@ const ProfilePage = () => {
           </p>
           <button
             type="button"
-            onClick={() => router.push("/sign-in")}
+            onClick={() => router.push("/singin")}
             className="mt-5 min-h-11 w-full rounded-lg bg-green-700 px-4 py-2 font-semibold text-white hover:bg-green-800"
           >
             সাইন ইন করুন
