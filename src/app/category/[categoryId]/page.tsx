@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import ProductSorting from "./ProductSorting";
 interface Product {
   id: number;
@@ -47,10 +48,17 @@ const CategoryPage = async ({
 
   if (products.length === 0) {
     return (
-      <main className="mx-auto max-w-6xl px-4 py-10">
+      <main className="mx-auto flex max-w-6xl flex-col items-center px-4 py-10">
         <p className="text-center text-gray-500">
           কোনো পণ্য পাওয়া যায়নি।
         </p>
+
+        <Link
+          href="/"
+          className="mt-6 w-fit rounded-lg bg-green-600 px-4 py-2 font-semibold text-white transition hover:bg-green-700"
+        >
+          ← হোম পেজে ফিরে যান
+        </Link>
       </main>
     );
   }
