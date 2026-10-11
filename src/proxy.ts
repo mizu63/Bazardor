@@ -1,9 +1,12 @@
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { auth } from "./lib/auth";
 
-export function proxy(request: NextRequest) {
-  const session = request.cookies.get("better-auth.session_token");
+export async function proxy(request: NextRequest) {
+const session = await auth.api.getSession({
+    headers: request.headers,
+  });
 
   if (!session) {
     return NextResponse.redirect(new URL("/singin", request.url));
@@ -14,8 +17,8 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // "/products/:path*",
+    "/products/:path*",
    
-    // "/profile/:path*",
+    "/profile/:path*",
   ],
 };
